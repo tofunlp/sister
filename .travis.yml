@@ -1,0 +1,16 @@
+language: python
+dist: xenial
+python:
+- 3.6
+- 3.7
+install: pip install flake8
+script:
+- flake8
+deploy:
+  provider: pypi
+  user: sobamchan
+  on:
+    tags: true
+  skip_existing: true
+  password:
+    secure: r1BqqKw6yyySY9nzEA5NM1Tdagmbw2mhftRr84PHDxtdFQKH6i8PsuuOYo/NIFlagYXV5GcsUH+GQjaIh1TCt08i1BeguJso5DTcvWzqTU4DjHKXfx/aNAjacstHWKsi4RwlCtqhAEu1zIywJvPviSY8EQsoTxN+025I+UDaPF9FTdf59iNzD9WqaI5csw8BIwGKTqjE+jlGgQh/38oAYhNefFxp/T24qFwAcm01RO6sO8UpSuWkDIBLh0WR8aVo0n7B9gz39YcY6ftg6XvIhLwjMpBEDI2YRD0cOiYl++oT5MJk0jQUsZ/eKpUxJwrGSfFOYzjCshTWBTpOyrjKMJ69hN6PMCpRHuoU1sZ34/owtO23Bi1zLHuXOw2gMoo1Vw0MZ4baAj11sYgK2FXuKhndPPCxg/d6r9ceRYdKZJO0OUfT8auITPvh+dw0DobD3qOWtWQCZjLKoI6FRvTVBUBJevViMZ7TJ9blzljxvzP5rEaggjpfkrkUpP+9eAZjjZuwVCfN/5W7Xxa3jvjRqqDhdDfBaTEIaIaKac6JYu2n2fzujqLGXBj/1PBq5xT4V6P7EgmwZPtemmKJcP+rK5pf8uB0gTl4Ia463wiqEA9GsWipxq+weCSEPtcULt2PhR63H5Bp+CHro3WBSb6b1apOPSFrFuTpnxtYgLozhtc=
