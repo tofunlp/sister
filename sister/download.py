@@ -10,7 +10,7 @@ from pathlib import Path
 
 
 _cache_root = os.environ.get(
-    'LINEFLOW_CACHE_ROOT',
+    'SISTER_CACHE_ROOT',
     os.path.join(os.path.expanduser('~'), '.sister', 'cache'))
 
 
