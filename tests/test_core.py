@@ -1,17 +1,18 @@
 from unittest import TestCase
 
-from sister import Core
+from sister import MeanEmbedding
 
 
-class CoreTextCase(TestCase):
+class MeanEmbeddingCase(TestCase):
 
-    def setup(self):
+    def setUp(self):
+        self.sentence_embedding = MeanEmbedding()
         pass
 
     def tearDown(self):
         pass
 
-    def test_main(self):
-        name = 'sotaro'
-        core = Core()
-        self.assertEqual(f'Hello {name}!', core.main(name))
+    def test_embed(self):
+        sentence = "I am a dog."
+        vector = self.sentence_embedding.embed(sentence)
+        self.assertEqual(vector.shape, (300,))

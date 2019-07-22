@@ -11,6 +11,8 @@ v = {editable = true,version = "*"}
 
 [packages]
 pytest = "*"
+fasttext = "*"
+numpy = "*"
 
 [requires]
 python_version = "3.7"
