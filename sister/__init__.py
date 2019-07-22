@@ -1,1 +1,1 @@
-from sister.core import Core, SentenceEmbedding  # NOQA
+from sister.core import MeanEmbedding  # NOQA
