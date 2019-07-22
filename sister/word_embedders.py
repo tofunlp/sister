@@ -27,6 +27,9 @@ class WordEmbedding(object):
     def get_word_vector(self, word: str) -> np.ndarray:
         raise NotImplementedError
 
+    def get_word_vectors(self, words: List[str]) -> np.ndarray:
+        raise NotImplementedError
+
 
 class FasttextEmbedding(WordEmbedding):
 
