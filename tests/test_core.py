@@ -14,4 +14,4 @@ class CoreTextCase(TestCase):
     def test_main(self):
         name = 'sotaro'
         core = Core()
-        self.assertEqual(f'Hello {name}!', core.main(name))
+        self.assertEqual(f'Hello {name}!!!', core.main(name))
