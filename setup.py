@@ -24,6 +24,6 @@ setup(
             'Programming Language :: Python :: 3.6',
             'Programming Language :: Python :: 3.7'
             ],
-        installl_requires=[],
+        installl_requires=['fasttext', 'numpy'],
         tests_requires=['pytest']
         )
