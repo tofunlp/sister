@@ -10,15 +10,13 @@ class Tokenizer(object):
 class SimpleTokenizer(Tokenizer):
 
     def __init__(self):
-        self.replace_tokens = [
-                ('.', ' .'),
-                ('?', ' ?'),
-                ('!', ' !'),
-                ('(', ' ( '),
-                (')', ' ) '),
-                ]
+        self.replace_tokens = str.maketrans({
+            '.': ' .',
+            '?': ' ?',
+            '!': ' !',
+            '(': ' ( ',
+            ')': ' ) ',
+        })
 
     def tokenize(self, sentence: str) -> List[str]:
-        for replace_token in self.replace_tokens:
-            sentence = sentence.replace(*replace_token)
-        return sentence.split()
+        return sentence.translate(self.replace_tokens).split()
