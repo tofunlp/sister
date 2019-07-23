@@ -26,8 +26,7 @@ class MeanEmbedding(SentenceEmbedding):
             self,
             tokenizer: Tokenizer = SimpleTokenizer(),
             word_embedder: WordEmbedding = FasttextEmbedding()) -> None:
-        self.tokenizer = tokenizer
-        self.word_embedder = word_embedder
+        super().__init__(tokenizer, word_embedder)
 
     def embed(self, sentence: str) -> np.ndarray:
         tokens = self.tokenizer.tokenize(sentence)
