@@ -1,22 +1,29 @@
 from unittest import TestCase
+from unittest.mock import patch
 
-from sister.word_embedders import FasttextEmbedding
+import numpy as np
 
 
 class FasttextEmbeddingCase(TestCase):
 
     def setUp(self):
-        self.embedding = FasttextEmbedding(lang="en")
+        embedding_patcher = patch('sister.word_embedders.FasttextEmbedding')
+        self.embedding = embedding_patcher.start()(lang='en')
+        self.embedding.get_word_vector.return_value = np.random.rand(300)
+        self.embedding.get_word_vectors.side_effect = lambda words: np.random.rand(len(words), 300)
+        self.embedding_patcher = embedding_patcher
 
     def tearDown(self):
-        pass
+        self.embedding_patcher.stop()
 
     def test_get_word_vector(self):
         word = 'test'
         vector = self.embedding.get_word_vector(word)
-        self.assertEqual(vector.shape, (300,))
+        self.assertTupleEqual(vector.shape, (300,))
+        self.embedding.get_word_vector.assert_called_once_with(word)
 
     def test_get_word_vectors(self):
         words = ['good', 'test']
         vectors = self.embedding.get_word_vectors(words)
-        self.assertEqual(vectors.shape, (len(words), 300))
+        self.assertTupleEqual(vectors.shape, (len(words), 300))
+        self.embedding.get_word_vectors.assert_called_once_with(words)
