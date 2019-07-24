@@ -3,6 +3,7 @@ import shutil
 import tempfile
 import hashlib
 import zipfile
+from typing import Callable
 from pathlib import Path
 import unittest
 from unittest import mock
@@ -30,11 +31,11 @@ class TestGetCacheDirectory(unittest.TestCase):
         path = download.get_cache_directory('test', False)
         self.assertEqual(path, os.path.join(root, 'test'))
 
-    def test_fails_to_make_directory(self):
-        with mock.patch('os.makedirs') as f:
-            f.side_effect = OSError()
-            with self.assertRaises(OSError):
-                download.get_cache_directory('/sister_test_cache', True)
+    @mock.patch('os.makedirs')
+    def test_fails_to_make_directory(self, f: Callable):
+        f.side_effect = OSError()
+        with self.assertRaises(OSError):
+            download.get_cache_directory('/sister_test_cache', True)
 
 
 class TestCachedDownload(unittest.TestCase):
@@ -48,11 +49,11 @@ class TestCachedDownload(unittest.TestCase):
         download.set_cache_root(self.default_cache_root)
         shutil.rmtree(self.temp_dir)
 
-    def test_fails_to_make_directory(self):
-        with mock.patch('os.makedirs') as f:
-            f.side_effect = OSError()
-            with self.assertRaises(OSError):
-                download.cached_download('https://example.com')
+    @mock.patch('os.makedirs')
+    def test_fails_to_make_directory(self, f: Callable):
+        f.side_effect = OSError()
+        with self.assertRaises(OSError):
+            download.cached_download('https://example.com')
 
     def test_file_exists(self):
         # Make an empty file which has the same name as the cache directory
@@ -61,21 +62,21 @@ class TestCachedDownload(unittest.TestCase):
         with self.assertRaises(OSError):
             download.cached_download('https://example.com')
 
-    def test_cache_exists(self):
-        with mock.patch('os.path.exists') as f:
-            f.return_value = True
-            url = 'https://example.com'
-            path = download.cached_download(url)
-            self.assertEqual(path, f'{self.temp_dir}/_dl_cache/{hashlib.md5(url.encode("utf-8")).hexdigest()}')
+    @mock.patch('os.path.exists')
+    def test_cache_exists(self, f: Callable):
+        f.return_value = True
+        url = 'https://example.com'
+        path = download.cached_download(url)
+        self.assertEqual(path, os.path.join(self.temp_dir, '_dl_cache', hashlib.md5(url.encode('utf-8')).hexdigest()))
 
-    def test_cached_download(self):
-        with mock.patch('urllib.request.urlretrieve') as f:
-            def urlretrieve(url, path):
-                with open(path, 'w') as f:
-                    f.write('test')
-            f.side_effect = urlretrieve
+    @mock.patch('urllib.request.urlretrieve')
+    def test_cached_download(self, f: Callable):
+        def urlretrieve(url, path):
+            with open(path, 'w') as f:
+                f.write('test')
+        f.side_effect = urlretrieve
 
-            cache_path = download.cached_download('https://example.com')
+        cache_path = download.cached_download('https://example.com')
 
         self.assertEqual(f.call_count, 1)
         args, kwargs = f.call_args
