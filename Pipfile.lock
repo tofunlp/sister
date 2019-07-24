@@ -154,10 +154,10 @@
         },
         "pyparsing": {
             "hashes": [
-                "sha256:530d8bf8cc93a34019d08142593cf4d78a05c890da8cf87ffa3120af53772238",
-                "sha256:f78e99616b6f1a4745c0580e170251ef1bbafc0d0513e270c4bd281bf29d2800"
+                "sha256:1873c03321fc118f4e9746baf201ff990ceb915f433f23b395f5580d1840cb2a",
+                "sha256:9b6323ef4ab914af344ba97510e966d64ba91055d6b9afa6b30799340e89cc03"
             ],
-            "version": "==2.4.1"
+            "version": "==2.4.0"
         },
         "pytest": {
             "hashes": [
@@ -199,10 +199,10 @@
         },
         "virtualenv": {
             "hashes": [
-                "sha256:861bbce3a418110346c70f5c7a696fdcf23a261424e1d28aa4f9362fc2ccbc19",
-                "sha256:ba8ce6a961d842320681fb90a3d564d0e5134f41dacd0e2bae7f02441dde2d52"
+                "sha256:50e062b385b6e5fc6e5644ffe14e226550109a4c65e725b47ae7e3b978d320b5",
+                "sha256:fb528e20ecfce349de1dc2c8cbb394d1189b3f9507aea7273fbfb1c2167a4a4e"
             ],
-            "version": "==16.6.2"
+            "version": "==16.7.0"
         },
         "wcwidth": {
             "hashes": [
@@ -482,10 +482,10 @@
         },
         "pyparsing": {
             "hashes": [
-                "sha256:530d8bf8cc93a34019d08142593cf4d78a05c890da8cf87ffa3120af53772238",
-                "sha256:f78e99616b6f1a4745c0580e170251ef1bbafc0d0513e270c4bd281bf29d2800"
+                "sha256:1873c03321fc118f4e9746baf201ff990ceb915f433f23b395f5580d1840cb2a",
+                "sha256:9b6323ef4ab914af344ba97510e966d64ba91055d6b9afa6b30799340e89cc03"
             ],
-            "version": "==2.4.1"
+            "version": "==2.4.0"
         },
         "pytest": {
             "hashes": [
