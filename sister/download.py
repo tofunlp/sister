@@ -72,6 +72,5 @@ def cached_download(url: str) -> str:
 
 def cached_unzip(path: Path, saveto: Path) -> None:
     if not saveto.exists():
-        print('Unzipping...')
         with zipfile.ZipFile(path, 'r') as f:
             f.extractall(saveto)
