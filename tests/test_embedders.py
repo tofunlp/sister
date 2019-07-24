@@ -3,6 +3,31 @@ from unittest.mock import patch
 
 import numpy as np
 
+from sister.word_embedders import WordEmbedding
+
+
+class WordEmbeddingCase(TestCase):
+
+    def setUp(self):
+        self.words = ['I', 'am', 'a', 'dog', '.']
+
+    def tearDown(self):
+        pass
+
+    def test_get_word_vectors_not_implemented(self):
+        class Dummy(WordEmbedding):
+            def get_word_vector(self, w): ...
+        with self.assertRaises(NotImplementedError):
+            words = self.words
+            Dummy().get_word_vectors(words)
+
+    def test_get_word_vector_not_implemented(self):
+        class Dummy(WordEmbedding):
+            def get_word_vectors(self, w): ...
+        with self.assertRaises(NotImplementedError):
+            words = self.words
+            Dummy().get_word_vector(words)
+
 
 class FasttextEmbeddingCase(TestCase):
 

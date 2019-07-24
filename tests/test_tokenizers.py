@@ -3,6 +3,22 @@ from unittest import TestCase
 from sister import tokenizers
 
 
+class TokenizerCase(TestCase):
+
+    def setUp(self):
+        pass
+
+    def tearDown(self):
+        pass
+
+    def test_tokenize_not_implemented(self):
+        class Dummy(tokenizers.Tokenizer):
+            pass
+        with self.assertRaises(NotImplementedError):
+            sentence = 'I am a dog.'
+            Dummy().tokenize(sentence)
+
+
 class SimpleTokenizerCase(TestCase):
 
     def setUp(self):

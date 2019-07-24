@@ -8,11 +8,17 @@ neovim = "*"
 ipython = "*"
 flake8 = "*"
 v = {editable = true,version = "*"}
+pytest-cov = "*"
 
 [packages]
-pytest = "*"
 fasttext = "*"
 numpy = "*"
+pytest = "*"
+pytest-cov = "*"
+tox = "*"
 
 [requires]
 python_version = "3.7"
+
+[scripts]
+tests = "pytest --cov=sister tests"
