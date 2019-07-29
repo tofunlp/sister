@@ -24,8 +24,11 @@ class MeanEmbedding(SentenceEmbedding):
 
     def __init__(
             self,
-            tokenizer: Tokenizer = SimpleTokenizer(),
-            word_embedder: WordEmbedding = FasttextEmbedding()) -> None:
+            lang: str = 'en',
+            tokenizer: Tokenizer = None,
+            word_embedder: WordEmbedding = None) -> None:
+        tokenizer = tokenizer or SimpleTokenizer()
+        word_embedder = word_embedder or FasttextEmbedding(lang)
         super().__init__(tokenizer, word_embedder)
 
     def embed(self, sentence: str) -> np.ndarray:

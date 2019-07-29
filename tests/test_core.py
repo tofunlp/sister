@@ -1,6 +1,9 @@
 from unittest import TestCase
+from unittest.mock import patch
 
-from sister.tokenizers import Tokenizer
+import numpy as np
+
+from sister.tokenizers import Tokenizer, SimpleTokenizer
 from sister.word_embedders import WordEmbedding
 from sister import MeanEmbedding
 from sister.core import SentenceEmbedding
@@ -32,10 +35,19 @@ class SentenceEmbeddingCase(TestCase):
 class MeanEmbeddingCase(TestCase):
 
     def setUp(self):
-        self.sentence_embedding = MeanEmbedding()
+        embedding_patcher = patch('sister.word_embedders.FasttextEmbedding')
+        embedding = embedding_patcher.start()(lang='en')
+        embedding.get_word_vector.return_value = np.random.rand(300)
+        embedding.get_word_vectors.side_effect = lambda words: np.random.rand(len(words), 300)
+
+        self.sentence_embedding = MeanEmbedding(
+                tokenizer=SimpleTokenizer(),
+                word_embedder=embedding
+                )
+        self.embedding_patcher = embedding_patcher
 
     def tearDown(self):
-        pass
+        self.embedding_patcher.stop()
 
     def test_embed(self):
         sentence = "I am a dog."
