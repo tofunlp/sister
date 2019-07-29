@@ -10,15 +10,17 @@ from sister.download import cached_download, cached_unzip
 def get_fasttext(lang: str = "en"):
     # Download.
     urls = {
-            "en": "https://dl.fbaipublicfiles.com/fasttext/vectors-wiki/wiki.simple.zip"
+            "en": "https://dl.fbaipublicfiles.com/fasttext/vectors-wiki/wiki.simple.zip",
+            "ja": "https://dl.fbaipublicfiles.com/fasttext/vectors-wiki/wiki.ja.zip"
             }
     path = cached_download(urls[lang])
     path = Path(path)
-    dirpath = path.parent / 'fasttext'
+    dirpath = path.parent / 'fasttext' / lang
     cached_unzip(path, dirpath)
 
     print("Loading model...")
-    model = load_model(str(dirpath / 'wiki.simple.bin'))
+    filename = Path(urls[lang]).stem + '.bin'
+    model = load_model(str(dirpath / filename))
     return model
 
 
