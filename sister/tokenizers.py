@@ -26,7 +26,7 @@ class SimpleTokenizer(Tokenizer):
 class JapaneseTokenizer(Tokenizer):
 
     def __init__(self):
-        self.model = JanomeTokenizer()
+        self._t = JanomeTokenizer()
 
     def tokenize(self, sentence: str) -> List[str]:
-        return self.model.tokenize(sentence, wakati=True)
+        return self._t.tokenize(sentence, wakati=True)
