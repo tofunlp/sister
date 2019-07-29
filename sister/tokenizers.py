@@ -1,4 +1,5 @@
 from typing import List
+from janome.tokenizer import Tokenizer as JanomeTokenizer
 
 
 class Tokenizer(object):
@@ -20,3 +21,12 @@ class SimpleTokenizer(Tokenizer):
 
     def tokenize(self, sentence: str) -> List[str]:
         return sentence.translate(self.replace_tokens).split()
+
+
+class JapaneseTokenizer(Tokenizer):
+
+    def __init__(self):
+        self.model = JanomeTokenizer()
+
+    def tokenize(self, sentence: str) -> List[str]:
+        return self.model.tokenize(sentence, wakati=True)

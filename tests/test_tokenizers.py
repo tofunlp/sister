@@ -40,3 +40,20 @@ class SimpleTokenizerCase(TestCase):
                 ]
         tokens = self.tokenizer.tokenize(sentence)
         self.assertEqual(gold, tokens)
+
+
+class JapaneseTokenizer(TestCase):
+
+    def setUp(self):
+        self.tokenizer = tokenizers.JapaneseTokenizer()
+
+    def tearDown(self):
+        pass
+
+    def test_tokenize(self):
+        sentence = "私は犬だ。"
+        gold = ["私", "は", "犬", "だ", "。"]
+        self.assertEqual(
+                gold,
+                self.tokenizer.tokenize(sentence)
+                )
