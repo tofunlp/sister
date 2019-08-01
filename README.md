@@ -12,7 +12,7 @@ pip install sister
 # Basic Usage
 ```python
 import sister
-sentence_embedding = sister.SentenceEmbedding()
+sentence_embedding = sister.MeanEmbedding(lang="en")
 
 sentence = "I am a dog."
 vector = sentence_embedding(sentence)
