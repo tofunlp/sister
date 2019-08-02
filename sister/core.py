@@ -1,6 +1,6 @@
 import numpy as np
 
-from sister.tokenizers import Tokenizer, SimpleTokenizer
+from sister.tokenizers import Tokenizer, SimpleTokenizer, JapaneseTokenizer
 from sister.word_embedders import WordEmbedding, FasttextEmbedding
 
 
@@ -27,7 +27,7 @@ class MeanEmbedding(SentenceEmbedding):
             lang: str = 'en',
             tokenizer: Tokenizer = None,
             word_embedder: WordEmbedding = None) -> None:
-        tokenizer = tokenizer or SimpleTokenizer()
+        tokenizer = tokenizer or {"en": SimpleTokenizer(), "ja": JapaneseTokenizer()}[lang]
         word_embedder = word_embedder or FasttextEmbedding(lang)
         super().__init__(tokenizer, word_embedder)
 
