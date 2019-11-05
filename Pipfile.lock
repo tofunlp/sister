@@ -92,11 +92,11 @@
         },
         "janome": {
             "hashes": [
-                "sha256:3da9ba0bdfa153c126f72d9ac9fa51646f209032d7098eec96f985a77a4da3b4",
-                "sha256:acbf82b0ed3c3b797f91f18bdc90347f7baed9aab39e4f21d89ff6aef220180f"
+                "sha256:3bddefa113ab1342653193e70be2a18c3d1baa64837a8ac0c6960efb8a07bba7",
+                "sha256:b002731b2790da73d085c628ab9c929dcc4bae7ef20910abd976713d6c0666b0"
             ],
             "index": "pypi",
-            "version": "==0.3.9"
+            "version": "==0.3.10"
         },
         "more-itertools": {
             "hashes": [
@@ -162,10 +162,10 @@
         },
         "pyparsing": {
             "hashes": [
-                "sha256:6f98a7b9397e206d78cc01df10131398f1c8b8510a2f4d97d9abd82e1aacdd80",
-                "sha256:d9338df12903bbf5d65a0e4e87c2161968b10d2e489652bb47001d82a9b028b4"
+                "sha256:0961bf3429691b9cd7e3695a37ee8bc18e95c56ac1271dc2bbc41697062d1b6d",
+                "sha256:8997c62f779045b07273e124bbe1d03e2eebb9a38a7ef0798fea4bae72b4b6a3"
             ],
-            "version": "==2.4.2"
+            "version": "==2.4.3"
         },
         "pytest": {
             "hashes": [
@@ -496,10 +496,10 @@
         },
         "pyparsing": {
             "hashes": [
-                "sha256:6f98a7b9397e206d78cc01df10131398f1c8b8510a2f4d97d9abd82e1aacdd80",
-                "sha256:d9338df12903bbf5d65a0e4e87c2161968b10d2e489652bb47001d82a9b028b4"
+                "sha256:0961bf3429691b9cd7e3695a37ee8bc18e95c56ac1271dc2bbc41697062d1b6d",
+                "sha256:8997c62f779045b07273e124bbe1d03e2eebb9a38a7ef0798fea4bae72b4b6a3"
             ],
-            "version": "==2.4.2"
+            "version": "==2.4.3"
         },
         "pytest": {
             "hashes": [
