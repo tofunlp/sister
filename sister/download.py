@@ -5,6 +5,8 @@ import os
 import shutil
 import sys
 import zipfile
+import bz2
+import gzip
 from urllib import request
 from pathlib import Path
 
@@ -74,3 +76,19 @@ def cached_unzip(path: Path, saveto: Path) -> None:
     if not saveto.exists():
         with zipfile.ZipFile(path, 'r') as f:
             f.extractall(saveto)
+
+
+def cached_decompress_bz2(path: Path, saveto: Path) -> None:
+    if not saveto.exists():
+        with bz2.open(path, 'rb') as fin:
+            _content = fin.read()
+        with open(saveto, 'wb') as fout:
+            fout.write(_content)
+
+
+def cached_decompress_gzip(path: Path, saveto: Path) -> None:
+    if not saveto.exists():
+        with gzip.open(path, 'rb') as fin:
+            _content = fin.read()
+        with open(saveto, 'wb') as fout:
+            fout.write(_content)

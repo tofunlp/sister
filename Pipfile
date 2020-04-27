@@ -17,6 +17,8 @@ pytest = "*"
 pytest-cov = "*"
 tox = "*"
 janome = "*"
+gensim = "*"
+joblib = "*"
 
 [requires]
 python_version = "3.7"
