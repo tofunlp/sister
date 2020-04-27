@@ -24,6 +24,6 @@ setup(
             'Programming Language :: Python :: 3.6',
             'Programming Language :: Python :: 3.7'
             ],
-        install_requires=['fasttext', 'numpy', 'Janome'],
+        install_requires=['fasttext', 'numpy', 'Janome', 'gensim', 'joblib'],
         tests_requires=['pytest']
         )
