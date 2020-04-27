@@ -24,6 +24,7 @@ setup(
             'Programming Language :: Python :: 3.6',
             'Programming Language :: Python :: 3.7'
             ],
+        extras_require={':python_version<"3.7"': ['importlib-resources']},
         install_requires=['fasttext', 'numpy', 'Janome', 'gensim', 'joblib'],
-        tests_requires=['pytest', 'importlib_resources']
+        tests_requires=['pytest']
         )
