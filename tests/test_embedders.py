@@ -11,13 +11,6 @@ class WordEmbeddingCase(TestCase):
     def tearDown(self):
         pass
 
-    def test_get_word_vectors_not_implemented(self):
-        class Dummy(WordEmbedding):
-            def get_word_vector(self, w): ...
-        with self.assertRaises(NotImplementedError):
-            words = self.words
-            Dummy().get_word_vectors(words)
-
     def test_get_word_vector_not_implemented(self):
         class Dummy(WordEmbedding):
             def get_word_vectors(self, w): ...
