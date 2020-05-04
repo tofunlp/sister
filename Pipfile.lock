@@ -39,17 +39,17 @@
         },
         "boto3": {
             "hashes": [
-                "sha256:0f01cd63dbfa0d2b789f427f7c1a18cc4067580c6e2b31078d64b3bb6375a6dd",
-                "sha256:4f7f11e7489c267f9ea0c6193bfbe20ef1a8dd639d780aea0ac61a769de722e1"
+                "sha256:6374e39ea66433250ac6e4726623fe59ec32bfd52e5c871140c883ab72b0375c",
+                "sha256:7a2474db6576d7d3f5c3336ec54450e34211d44e2342e501a67e2fae35916e63"
             ],
-            "version": "==1.12.46"
+            "version": "==1.13.1"
         },
         "botocore": {
             "hashes": [
-                "sha256:ae39899dc450570968e3e128d2c8a011e5f8d4f6fd07a7d1f01df10a11ef332d",
-                "sha256:b609e2373dccb728b34555af28fd8bd87cc57295cafa32f8a5b8044bb58b9ea8"
+                "sha256:879cedb22baf9446323240f1cf57d4e0e7ba262ba6fde6d3540cf7fdd7ddad34",
+                "sha256:c6d3dd976c1462a4e0f2dabde09c38de2a641e6b6bb0af505ac8465735796367"
             ],
-            "version": "==1.15.46"
+            "version": "==1.16.1"
         },
         "certifi": {
             "hashes": [
@@ -331,9 +331,9 @@
         },
         "smart-open": {
             "hashes": [
-                "sha256:221cc08ae926af6ad72d141f208d228e1e801b1ee9b15f3e466eecf89d931002"
+                "sha256:555962abf982faff8a8aeb65e0695474e3091f604826055782beffa8400e4e4e"
             ],
-            "version": "==1.11.1"
+            "version": "==2.0.0"
         },
         "toml": {
             "hashes": [
@@ -344,11 +344,11 @@
         },
         "tox": {
             "hashes": [
-                "sha256:a4a6689045d93c208d77230853b28058b7513f5123647b67bf012f82fa168303",
-                "sha256:b2c4b91c975ea5c11463d9ca00bebf82654439c5df0f614807b9bdec62cc9471"
+                "sha256:8d97bfaf70053ed3db56f57377288621f1bcc7621446d301927d18df93b1c4c3",
+                "sha256:af09c19478e8fc7ce7555b3d802ddf601b82684b874812c5857f774b8aee1b67"
             ],
             "index": "pypi",
-            "version": "==3.14.6"
+            "version": "==3.15.0"
         },
         "urllib3": {
             "hashes": [
@@ -360,10 +360,10 @@
         },
         "virtualenv": {
             "hashes": [
-                "sha256:5021396e8f03d0d002a770da90e31e61159684db2859d0ba4850fbea752aa675",
-                "sha256:ac53ade75ca189bc97b6c1d9ec0f1a50efe33cbf178ae09452dcd9fd309013c1"
+                "sha256:8bb59b586fea2eb3bb5600f7ef53d11fd4a64806cdf1a7217b29e7d943dbd8dc",
+                "sha256:b86480fc1fe3908a85d7377eee8dc9644a58090b9d3a3701b347c69c308f3e72"
             ],
-            "version": "==20.0.18"
+            "version": "==20.0.19"
         },
         "wcwidth": {
             "hashes": [
@@ -381,14 +381,6 @@
         }
     },
     "develop": {
-        "appnope": {
-            "hashes": [
-                "sha256:5b26757dc6f79a3b7dc9fab95359328d5747fcb2409d331ea66d0272b90ab2a0",
-                "sha256:8b995ffe925347a2138d7ac0fe77155e4311a0ea6d6da4f5128fe4b3cbe5ed71"
-            ],
-            "markers": "sys_platform == 'darwin'",
-            "version": "==0.1.0"
-        },
         "attrs": {
             "hashes": [
                 "sha256:08a96c641c3a74e44eb59afb61a24f2cb9f4d7188748e76ba4bb5edfa3cb7d1c",
