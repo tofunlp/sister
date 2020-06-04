@@ -23,6 +23,7 @@ vector = sentence_embedding(sentence)
 
 - English
 - Japanese
+- French
 
 In order to support a new language, please implement `Tokenizer` (inheriting `sister.tokenizers.Tokenizer`) and add fastText
 pre-trained url to `word_embedders.get_fasttext()` ([List of model urls](https://github.com/facebookresearch/fastText/blob/master/docs/pretrained-vectors.md)).
