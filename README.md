@@ -1,5 +1,7 @@
-# sister
-SISTER (**SI**mple **S**en**T**ence **E**mbedde**R**)
+<div align="center">
+    <br>
+    <img src="./docs/img/banner.jpg" width="400"/>
+</div>
 
 
 # Installation
