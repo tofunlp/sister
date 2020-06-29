@@ -27,5 +27,8 @@ setup(
         install_requires=[
             'fasttext', 'numpy', 'Janome', 'gensim', 'joblib'
             ],
+        extras_require={
+            'bert': ['transformers', 'torch', 'mecab-python3']
+            },
         tests_requires=['pytest', 'importlib-resources']
         )
