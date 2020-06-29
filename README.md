@@ -31,6 +31,7 @@ pre-trained url to `word_embedders.get_fasttext()` ([List of model urls](https:/
 
 # Bert models are supported for en, fr, ja (2020-06-29).
 Actually Albert for English, CamemBERT for French and BERT for Japanese.
+To use BERT, you need to install sister by `pip install 'sister[bert]'`.
 
 ```python
 import sister
