@@ -19,6 +19,9 @@ tox = "*"
 janome = "*"
 gensim = "*"
 joblib = "*"
+transformers = "*"
+torch = "*"
+mecab-python3 = "*"
 
 [requires]
 python_version = "3.7"

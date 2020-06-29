@@ -40,3 +40,46 @@ class MeanEmbedding(SentenceEmbedding):
 
     def __call__(self, sentence: str) -> np.ndarray:
         return self.embed(sentence)
+
+
+class BertEmbedding:
+
+    def __init__(
+            self,
+            lang: str = 'en',
+            ):
+        try:
+            from transformers import BertJapaneseTokenizer, AlbertTokenizer, CamembertTokenizer
+            from transformers import AlbertModel, CamembertModel, BertModel
+        except ImportError:
+            msg = "importing bert dep failed."
+            msg += "\n try to install sister by `pip install sister[bert]`."
+            raise ImportError(msg)
+
+        if lang == "en":
+            tokenizer = AlbertTokenizer.from_pretrained("albert-base-v2")
+            model = AlbertModel.from_pretrained("albert-base-v2")
+        elif lang == "fr":
+            tokenizer = CamembertTokenizer.from_pretrained("camembert-base")
+            model = CamembertModel.from_pretrained("camembert-base")
+        elif lang == "ja":
+            tokenizer = BertJapaneseTokenizer.from_pretrained("cl-tohoku/bert-base-japanese-whole-word-masking")
+            model = BertModel.from_pretrained("cl-tohoku/bert-base-japanese-whole-word-masking")
+
+        self.tokenizer = tokenizer
+        self.model = model
+
+    def embed(self, sentence: str):
+        try:
+            import torch
+        except ImportError:
+            msg = "importing bert dep failed."
+            msg += "\n try to install sister by `pip install sister[bert]`."
+            raise ImportError(msg)
+        tokens = self.tokenizer.encode_plus(sentence, add_special_tokens=True)
+        input_ids = torch.tensor(tokens["input_ids"]).view(1, -1)
+        vector = self.model(input_ids)[0][0, 0, :].detach().numpy()
+        return vector
+
+    def __call__(self, sentence: str):
+        return self.embed(sentence)
