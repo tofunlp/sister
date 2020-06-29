@@ -77,7 +77,7 @@ class BertEmbedding:
             msg += "\n try to install sister by `pip install sister[bert]`."
             raise ImportError(msg)
         tokens = self.tokenizer.encode_plus(sentence, add_special_tokens=True)
-        input_ids = torch.tensor(tokens["input_ids"]).view(1, -1)
+        input_ids = torch.tensor(tokens["input_ids"][:512]).view(1, -1)
         vector = self.model(input_ids)[0][0, 0, :].detach().numpy()
         return vector
 
