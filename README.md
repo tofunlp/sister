@@ -27,3 +27,15 @@ vector = sentence_embedding(sentence)
 
 In order to support a new language, please implement `Tokenizer` (inheriting `sister.tokenizers.Tokenizer`) and add fastText
 pre-trained url to `word_embedders.get_fasttext()` ([List of model urls](https://github.com/facebookresearch/fastText/blob/master/docs/pretrained-vectors.md)).
+
+
+# Bert models are supported for en, fr, ja (2020-06-29).
+Actually Albert for English, CamemBERT for French and BERT for Japanese.
+
+```python
+import sister
+bert_embedding = sister.BertEmbedding(lang="en")
+
+sentence = "I am a dog."
+vector = bert_embedding(sentence)
+```
