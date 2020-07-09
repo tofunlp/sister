@@ -40,3 +40,13 @@ bert_embedding = sister.BertEmbedding(lang="en")
 sentence = "I am a dog."
 vector = bert_embedding(sentence)
 ```
+
+You can also give multiple sentences to it (more efficient).
+
+```python
+import sister
+bert_embedding = sister.BertEmbedding(lang="en")
+
+sentences = ["I am a dog.", "I want be a cat."]
+vectors = bert_embedding(sentences)
+```

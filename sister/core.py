@@ -1,3 +1,4 @@
+from typing import List
 import numpy as np
 
 from sister.tokenizers import Tokenizer, SimpleTokenizer, JapaneseTokenizer
@@ -69,17 +70,27 @@ class BertEmbedding:
         self.tokenizer = tokenizer
         self.model = model
 
-    def embed(self, sentence: str):
+    def embed(self, sentences: List[str]):
         try:
             import torch
         except ImportError:
             msg = "importing bert dep failed."
             msg += "\n try to install sister by `pip install sister[bert]`."
             raise ImportError(msg)
-        tokens = self.tokenizer.encode_plus(sentence, add_special_tokens=True)
-        input_ids = torch.tensor(tokens["input_ids"][:512]).view(1, -1)
-        vector = self.model(input_ids)[0][0, 0, :].detach().numpy()
+
+        tokens = self.tokenizer.batch_encode_plus(sentences, pad_to_max_length=True, add_special_tokens=True)
+        input_ids = torch.tensor(tokens["input_ids"])[:, :512]
+        vector = self.model(input_ids)[0][:, 0, :].detach().numpy()
         return vector
 
-    def __call__(self, sentence: str):
-        return self.embed(sentence)
+    def __call__(self, sentences: List[str]):
+
+        if isinstance(sentences, str):
+            sentences = [sentences]
+        hasone = len(sentences) == 1
+
+        vecs = self.embed(sentences)
+        if hasone:
+            vecs = vecs.reshape(-1)
+
+        return vecs
