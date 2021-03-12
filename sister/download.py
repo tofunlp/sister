@@ -7,8 +7,12 @@ import sys
 import zipfile
 import bz2
 import gzip
+import progressbar
 from urllib import request
 from pathlib import Path
+
+
+pbar = None
 
 
 _cache_root = os.environ.get(
@@ -48,6 +52,20 @@ def get_cache_directory(cache_name: str,
     return path
 
 
+def show_progress(block_num, block_size, total_size):
+    global pbar
+    if pbar is None:
+        pbar = progressbar.ProgressBar(maxval=total_size)
+        pbar.start()
+
+    downloaded = block_num * block_size
+    if downloaded < total_size:
+        pbar.update(downloaded)
+    else:
+        pbar.finish()
+        pbar = None
+
+
 def cached_download(url: str) -> str:
     cache_root = os.path.join(_cache_root, '_dl_cache')
     try:
@@ -66,7 +84,7 @@ def cached_download(url: str) -> str:
         temp_path = os.path.join(temp_root, 'dl')
         sys.stderr.write('Downloading from {}...\n'.format(url))
         sys.stderr.flush()
-        request.urlretrieve(url, temp_path)
+        request.urlretrieve(url, temp_path, show_progress)
         shutil.move(temp_path, cache_path)
 
     return cache_path

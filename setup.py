@@ -25,7 +25,7 @@ setup(
             'Programming Language :: Python :: 3.7'
             ],
         install_requires=[
-            'fasttext', 'numpy', 'Janome', 'gensim', 'joblib'
+            'fasttext', 'numpy', 'Janome', 'gensim', 'joblib', 'progressbar'
             ],
         extras_require={
             'bert': ['transformers', 'torch', 'mecab-python3']
