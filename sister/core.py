@@ -1,16 +1,13 @@
 from typing import List
+
 import numpy as np
 
-from sister.tokenizers import Tokenizer, SimpleTokenizer, JapaneseTokenizer
-from sister.word_embedders import WordEmbedding, FasttextEmbedding
+from sister.tokenizers import JapaneseTokenizer, SimpleTokenizer, Tokenizer
+from sister.word_embedders import FasttextEmbedding, WordEmbedding
 
 
 class SentenceEmbedding(object):
-
-    def __init__(
-            self,
-            tokenizer: Tokenizer,
-            word_embedder: WordEmbedding) -> None:
+    def __init__(self, tokenizer: Tokenizer, word_embedder: WordEmbedding) -> None:
         self.tokenizer = tokenizer
         self.word_embedder = word_embedder
 
@@ -22,15 +19,18 @@ class SentenceEmbedding(object):
 
 
 class MeanEmbedding(SentenceEmbedding):
-
     def __init__(
-            self,
-            lang: str = 'en',
-            tokenizer: Tokenizer = None,
-            word_embedder: WordEmbedding = None) -> None:
-        tokenizer = tokenizer or {"en": SimpleTokenizer(),
-                                  "fr": SimpleTokenizer(),
-                                  "ja": JapaneseTokenizer()}[lang]
+        self,
+        lang: str = "en",
+        tokenizer: Tokenizer = None,
+        word_embedder: WordEmbedding = None,
+    ) -> None:
+        tokenizer = tokenizer or {
+            "en": SimpleTokenizer(),
+            "fr": SimpleTokenizer(),
+            "ja": JapaneseTokenizer(),
+            "it": SimpleTokenizer(),
+        }[lang]
         word_embedder = word_embedder or FasttextEmbedding(lang)
         super().__init__(tokenizer, word_embedder)
 
@@ -44,14 +44,14 @@ class MeanEmbedding(SentenceEmbedding):
 
 
 class BertEmbedding:
-
     def __init__(
-            self,
-            lang: str = 'en',
-            ):
+        self,
+        lang: str = "en",
+    ):
         try:
-            from transformers import BertJapaneseTokenizer, AlbertTokenizer, CamembertTokenizer
-            from transformers import AlbertModel, CamembertModel, BertModel
+            from transformers import (AlbertModel, AlbertTokenizer,
+                                      BertJapaneseTokenizer, BertModel,
+                                      CamembertModel, CamembertTokenizer)
         except ImportError:
             msg = "importing bert dep failed."
             msg += "\n try to install sister by `pip install sister[bert]`."
@@ -64,8 +64,12 @@ class BertEmbedding:
             tokenizer = CamembertTokenizer.from_pretrained("camembert-base")
             model = CamembertModel.from_pretrained("camembert-base")
         elif lang == "ja":
-            tokenizer = BertJapaneseTokenizer.from_pretrained("cl-tohoku/bert-base-japanese-whole-word-masking")
-            model = BertModel.from_pretrained("cl-tohoku/bert-base-japanese-whole-word-masking")
+            tokenizer = BertJapaneseTokenizer.from_pretrained(
+                "cl-tohoku/bert-base-japanese-whole-word-masking"
+            )
+            model = BertModel.from_pretrained(
+                "cl-tohoku/bert-base-japanese-whole-word-masking"
+            )
 
         self.tokenizer = tokenizer
         self.model = model
@@ -78,7 +82,9 @@ class BertEmbedding:
             msg += "\n try to install sister by `pip install sister[bert]`."
             raise ImportError(msg)
 
-        tokens = self.tokenizer.batch_encode_plus(sentences, pad_to_max_length=True, add_special_tokens=True)
+        tokens = self.tokenizer.batch_encode_plus(
+            sentences, pad_to_max_length=True, add_special_tokens=True
+        )
         input_ids = torch.tensor(tokens["input_ids"])[:, :512]
         vector = self.model(input_ids)[0][:, 0, :].detach().numpy()
         return vector

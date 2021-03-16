@@ -1,26 +1,26 @@
 from unittest import TestCase
 
-from sister.word_embedders import WordEmbedding, FasttextEmbedding
+from sister.word_embedders import FasttextEmbedding, WordEmbedding
 
 
 class WordEmbeddingCase(TestCase):
-
     def setUp(self):
-        self.words = ['I', 'am', 'a', 'dog', '.']
+        self.words = ["I", "am", "a", "dog", "."]
 
     def tearDown(self):
         pass
 
     def test_get_word_vector_not_implemented(self):
         class Dummy(WordEmbedding):
-            def get_word_vectors(self, w): ...
+            def get_word_vectors(self, w):
+                ...
+
         with self.assertRaises(NotImplementedError):
             words = self.words
             Dummy().get_word_vector(words)
 
 
 class FasttextEmbeddingCase(TestCase):
-
     def setUp(self):
         # TODO
         # Downloading fasttext and unzipping is too heavy.
@@ -39,13 +39,13 @@ class FasttextEmbeddingCase(TestCase):
         pass
 
     def test_get_word_vector(self):
-        word = 'test'
+        word = "test"
         vector = self.embedding.get_word_vector(word)
         self.assertTupleEqual(vector.shape, (300,))
         # self.embedding.get_word_vector.assert_called_once_with(word)
 
     def test_get_word_vectors(self):
-        words = ['good', 'test']
+        words = ["good", "test"]
         vectors = self.embedding.get_word_vectors(words)
         self.assertTupleEqual(vectors.shape, (len(words), 300))
         # self.embedding.get_word_vectors.assert_called_once_with(words)
