@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "sister"
+version = "0.2.0"
+description = "SISTER (SImple SenTence EmbeddeR)"
+authors = ["sobamchan <oh.sore.sore.soutarou@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+fasttext = "0.9.2"
+numpy = "1.19.0"
+gensim = "3.8.3"
+transformers = "2.11.0"
+torch = "1.5.1"
+mecab-python3 = "0.996.5"
+progressbar = "^2.5"
+joblib = "^1.0.1"
+Janome = "0.3.10"
+
+[tool.poetry.dev-dependencies]
+ipython = "^7.22.0"
+flake8 = "^3.9.0"
+pytest-cov = "^2.11.1"
+pytest = "^6.2.2"
+tox = "^3.23.0"
+black = "^20.8b1"
+isort = "^5.8.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
