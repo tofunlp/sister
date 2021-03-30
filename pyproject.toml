@@ -3,6 +3,7 @@ name = "sister"
 version = "0.2.1"
 description = "SISTER (SImple SenTence EmbeddeR)"
 authors = ["sobamchan <oh.sore.sore.soutarou@gmail.com>"]
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.8"
