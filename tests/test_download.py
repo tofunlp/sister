@@ -72,7 +72,7 @@ class TestCachedDownload(unittest.TestCase):
 
     @mock.patch("urllib.request.urlretrieve")
     def test_cached_download(self, f: Callable):
-        def urlretrieve(url, path):
+        def urlretrieve(url, path, progress_hook=None):
             with open(path, "w") as f:
                 f.write("test")
 
@@ -83,7 +83,7 @@ class TestCachedDownload(unittest.TestCase):
         self.assertEqual(f.call_count, 1)
         args, kwargs = f.call_args
         self.assertEqual(kwargs, {})
-        self.assertEqual(len(args), 2)
+        self.assertEqual(len(args), 3)
         # The second argument is a temporary path, and it is removed
         self.assertEqual(args[0], "https://example.com")
 
