@@ -12,9 +12,6 @@ from urllib import request
 
 import progressbar
 
-pbar = None
-
-
 _cache_root = os.environ.get(
     "SISTER_CACHE_ROOT", os.path.join(os.path.expanduser("~"), ".sister", "cache")
 )
@@ -52,10 +49,8 @@ def get_cache_directory(cache_name: str, create_directory: bool = True) -> str:
 
 
 def show_progress(block_num, block_size, total_size):
-    global pbar
-    if pbar is None:
-        pbar = progressbar.ProgressBar(maxval=total_size)
-        pbar.start()
+    pbar = progressbar.ProgressBar(maxval=total_size)
+    pbar.start()
 
     downloaded = block_num * block_size
     if downloaded < total_size:
