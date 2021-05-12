@@ -12,7 +12,7 @@ def get_fasttext(lang: str = "en"):
     # Download.
     urls = {
             "en": "https://dl.fbaipublicfiles.com/fasttext/vectors-wiki/wiki.simple.zip",
-            "ja": "https://dl.fbaipublicfiles.com/fasttext/vectors-wiki/wiki.ja.zip",
+            "hi": "https://dl.fbaipublicfiles.com/fasttext/vectors-wiki/wiki.hi.zip",
             "fr": "https://dl.fbaipublicfiles.com/fasttext/vectors-wiki/wiki.fr.zip",
             }
     path = download.cached_download(urls[lang])
@@ -30,7 +30,7 @@ def get_word2vec(lang: str = "en"):
     # Download.
     urls = {
             "en": "https://s3.amazonaws.com/dl4j-distribution/GoogleNews-vectors-negative300.bin.gz",
-            "ja": "http://public.shiroyagi.s3.amazonaws.com/latest-ja-word2vec-gensim-model.zip"
+            "hi": "http://public.shiroyagi.s3.amazonaws.com/latest-hi-word2vec-gensim-model.zip"
             }
     path = download.cached_download(urls[lang])
     path = Path(path)
@@ -39,7 +39,7 @@ def get_word2vec(lang: str = "en"):
 
     print("Loading model...")
 
-    if lang == "ja":
+    if lang == "hi":
         dirpath = Path(download.get_cache_directory(str(Path("word2vec"))))
         download.cached_unzip(path, dirpath / lang)
         model_path = dirpath / lang / filename
