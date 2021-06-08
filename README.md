@@ -18,6 +18,21 @@ sentence = "I am a dog."
 vector = sentence_embedding(sentence)
 ```
 
+If you have custom model file by yourself, you can load it too.
+(Data Format has to be loadable as [`gensim.models.KeyedVectors`](https://radimrehurek.com/gensim/models/keyedvectors.html) for word2vec model files)
+
+```py
+import sister
+from sister.word_embedders import Word2VecEmbedding
+
+sentence_embedding = sister.MeanEmbedding(
+    lang="ja", Word2VecEmbedding(model_path="/path/to/model")
+)
+
+sentence = "I am a dog."
+vector = sentence_embedding(sentence)
+```
+
 
 # Supported languages.
 
