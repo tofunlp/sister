@@ -17,7 +17,7 @@ progressbar = "^2.5"
 Janome = "0.3.10"
 
 [tool.poetry.dev-dependencies]
-ipython = "^7.31.1"
+ipython = "^8.10.0"
 flake8 = "^3.9.0"
 pytest-cov = "^2.11.1"
 pytest = "^6.2.2"
